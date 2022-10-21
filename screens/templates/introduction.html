@@ -1,0 +1,77 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<div class="alt-nav">
+    <div style="position: absolute;
+    left: 11.10%;
+    right: 38.75%;
+    top: 13.80%;
+    bottom: 88.89%;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 28px;
+    /* or 200% */
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #0E88AF;">
+        Objectives
+    </div>
+    <div style="position: absolute;
+    height: 26px;
+    left: 7.80%;
+    right: 38.75%;
+    top: 40%;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    /* or 117% */
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    /* Typography/On Surface/High Emphasis */
+    color: rgba(39, 41, 54, 0.85);">
+        <a href="#" onclick="history.back()"><img style="margin-right: -5px;" src="static/assets/img/Icon.png"/></a>
+        Introduction
+    </div>
+</div>
+<body style="background: linear-gradient(3.47deg, #003366 13.28%, #3f87a6 91.28%);
+position: static;
+width: 1240px;
+overflow-x: hidden;
+margin-left: 10px;
+margin-top:-5px;
+height: 582px;">
+
+<form method="POST" enctype="multipart/form-data" action="weight_distribution">
+    {% csrf_token %}
+
+<div class="introduction-out-box" style="height: 420px; margin-top: 6px; width: 750px; margin-left: -158px;">
+    <div>
+        <div style=" border-radius: 4px; width: 660px;; margin-top: 10px; height: 28px; margin-left: 25px; background-color: #003366;">
+            <p style="color: white; text-align: center; font-size: 12px; font-weight: 600; padding:5px; font-family: 'Ubuntu';">Objective of this toolkit</p>
+        </div>
+        <div style="margin-top:6px; margin-left:28px; width: 578px;">
+            <p style="font-size:12px; font-weight: 500; font-family: 'Ubuntu';">Objectives of the toolkit is to prioritize right cases for suspicious report generation & mitigate the risk of  regulatory deadline violation. The toolkit sorts high priority SAR items that must be considered for filling with authorities to avoid regulatory fines. This will reduce the operational cost for financial institutions by great deal.</p>
+        </div>
+        <div style="border-radius: 4px; width: 660px;; margin-top: -10px; height: 27px; margin-left: 25px; background-color: #003366;">
+            <p style="color: white; text-align: center; font-size: 12px; font-weight: 600; padding:5px; font-family: 'Ubuntu';">How should this toolkit be used?</p>
+        </div>
+
+    </div>
+
+    <div class="index-select-box2" style="height: 420px; margin-top: -150px; width: 520px; margin-left: 490.2px; overflow-x: hidden;">
+        <img style="width: 500px; height: 250px; margin-top: 20px; margin-left: 10px" src="static\assets\img\shutterstock_1812057265.jpg" >
+        <button class="proceed-index-button" type="submit" style="font-size: 12px; margin-left: 150px; margin-top: 80px;"><b>Proceed</b></button>
+
+    </div>
+</form>
+</div>
+{% endblock %}
+</body>
+
+</html>

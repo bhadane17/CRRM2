@@ -1,0 +1,43 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en"><link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+</head>
+<style>
+  th,td{
+    border: 1px black solid;
+    background-color: #D6EEEE;
+  }
+</style>
+<body>
+  <table>
+    <tr>
+      <th>LIST NAME</th>
+      <th>VERY HIGH
+        100% match</th>
+      <th>HIGH
+        80%-99% match</th>
+      <th>MEDIUM
+        <80% match</th>
+    </tr>
+    {% for List_Matching in ltm %}
+      <tr>
+        <td>{{List_Matching.List_Name}}</td>
+        <td>{{List_Matching.Very_High}}</td>
+        <td>{{List_Matching.High}}</td>
+        <td>{{List_Matching.Medium}}</td>
+      </tr>
+    {% endfor %} 
+  </table>
+{% endblock %}  
+</body>
+
+</html>

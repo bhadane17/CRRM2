@@ -1,0 +1,17 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<body class="body-class">
+<div class="esg-login-box">
+        <p class="esg_title">Log out !</p>
+        <a href="{% url 'login' %}"><button class="esg-logout-button1">Login again</button></a>
+</div >
+{% endblock %}
+</body>
+
+</html>

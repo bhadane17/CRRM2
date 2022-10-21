@@ -1,0 +1,49 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en"><link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+</head>
+<style>
+  th,td{
+    border: 1px black solid;
+    background-color: #D6EEEE;
+  }
+</style>
+<body>
+  <table>
+    <tr>
+      <th>TRANSACTION/BEHAVIOR</th>
+      <th>Frequency
+        ( Per Week)</th>
+      <th>SCORE</th>
+      <th>Frequency
+        ( Per Week)</th>
+      <th>SCORE</th>
+      <th>Frequency
+        ( Per Week)</th>
+      <th>Score</th>
+    </tr>
+    {% for Transaction_Behavior in tsb %}
+      <tr>
+        <td>{{Transaction_Behavior.Transaction}}</td>
+        <td>{{Transaction_Behavior.Frquency_one}}</td>
+        <td>{{Transaction_Behavior.Score_one}}</td>
+        <td>{{Transaction_Behavior.Frquency_Two}}</td>
+        <td>{{Transaction_Behavior.Score_two}}</td>
+        <td>{{Transaction_Behavior.Frquency_Three}}</td>
+        <td>{{Transaction_Behavior.Score_three}}</td>
+      </tr>
+    {% endfor %} 
+  </table>
+{% endblock %}  
+</body>
+
+</html>

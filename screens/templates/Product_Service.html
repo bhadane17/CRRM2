@@ -1,0 +1,42 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en"><link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+</head>
+<style>
+  th,td{
+    border: 1px black solid;
+    background-color: #D6EEEE;
+  }
+</style>
+<body>
+  <table>
+    <tr>
+      <th>PRODUCT/SERVICE</th>
+      <th>HIGH </th>
+      <th>Medium</th>
+      <th>Low</th>
+      <th>Score</th>
+    </tr>
+    {% for Product_Service in pds %}
+      <tr>
+        <td>{{Product_Service.Product}}</td>
+        <td>{{Product_Service.High}}</td>
+        <td>{{Product_Service.Medium}}</td>
+        <td>{{Product_Service.Low}}</td>
+        <td>{{Product_Service.Score}}</td>
+      </tr>
+    {% endfor %} 
+  </table>
+{% endblock %}  
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en"><link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+</head>
+<style>
+  th,td{
+    border: 1px black solid;
+    background-color: #D6EEEE;
+  }
+</style>
+<body>
+  <table>
+    <tr>
+      <th>PARAMETERS</th>
+      <th>High</th>
+      <th>Medium</th>
+      <th>Low</th>
+      <th>Score</th>
+    </tr>
+    {% for Profile_linkage in pfl %}
+      <tr>
+        <td>{{Profile_linkage.Parameters}}</td>
+        <td>{{Profile_linkage.High}}</td>
+        <td>{{Profile_linkage.Medium}}</td>
+        <td>{{Profile_linkage.Low}}</td>
+        <td>{{Profile_linkage.Score}}</td>
+      </tr>
+    {% endfor %} 
+  </table>
+{% endblock %}  
+</body>
+
+</html>

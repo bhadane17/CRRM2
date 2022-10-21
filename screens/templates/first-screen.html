@@ -1,0 +1,533 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--<style>-->
+<!--  th,td{-->
+<!--    border: 1px black solid;-->
+<!--    background-color: #D6EEEE;-->
+<!--  }-->
+<!--</style>-->
+<style>
+        .container {
+            width: 50%
+        }
+        .d-flex{
+          display: flex;
+           width: 100%;
+        }
+        .d-flex-col{
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+        }
+        .text-center {
+          text-align: left;
+        }
+        .TabButton {
+              width: 100%;
+            color: #5A5A61;
+            border: 0;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #FFFFFF;
+            margin: 0;
+            font-size: 14px;
+            line-height: 16px;
+            font-weight: normal;
+            padding: 16px;
+            cursor: pointer;
+        }
+        .TabButtonSelected {
+
+            color: #7A1315 !important;
+            border-bottom-color: #C94927 !important;
+            font-weight: 500;
+        }
+
+        .d-chart-n {
+          display: none;
+        }
+
+        .d-chart-show {
+          display: block;
+        }
+
+        #wrapper11 {
+            display: grid;
+            grid-template-rows: 30px 1fr 30px;
+        }
+
+        #content11 {
+           overflow-y: scroll;
+           width: 830px;
+           height: 340px;
+        }
+
+        /* Optional */
+        #wrapper11 > * {
+           padding: 5px;
+        }
+        #header11 {
+        height: 40px;
+    }
+        .rounded-checkbox {
+          width:15px;
+          height: 15px;
+          border-radius: 50%;
+          vertical-align: middle;
+          border: 1px solid black;
+          appearance: none;
+          -webkit-appearance: none;
+          outline: none;
+          cursor: pointer;
+        }
+        .rounded-checkbox:checked {
+          appearance: auto;
+          clip-path: circle(50% at 50% 50%);
+          background-color: blue;
+        }
+
+
+    </style>
+<script>
+        window.onload = function display_score(){
+            console.log('inside display score')
+
+            var x = {{assessment_portfolio|safe}}
+            console.log(x)
+
+        }
+
+        function form_change(){
+            var is1_1 = document.forms['screening_form']['is1_1'].value
+            var is1_2 = document.forms['screening_form']['is1_2'].value
+            var is1_3 = document.forms['screening_form']['is1_3'].value
+            var is1_4 = document.forms['screening_form']['is1_4'].value
+            var is1_5 = document.forms['screening_form']['is1_5'].value
+            var is1_6 = document.forms['screening_form']['is1_6'].value
+            var is1_7 = document.forms['screening_form']['is1_7'].value
+            var is1_8 = document.forms['screening_form']['is1_8'].value
+            var is1_9 = document.forms['screening_form']['is1_9'].value
+            var is1_10 = document.forms['screening_form']['is1_10'].value
+            var is1_11 = document.forms['screening_form']['is1_11'].value
+            var is1_12 = document.forms['screening_form']['is1_12'].value
+            var is1_13 = document.forms['screening_form']['is1_13'].value
+
+            console.log('onchange')
+
+            if (is1_1 != '' && is1_2 != '' && is1_3 != '' && is1_4 != '' && is1_5 != '' &&
+             is1_6 != '' && is1_7 != '' && is1_8 != '' && is1_9 != '' && is1_10 != '' && is1_11 != '' &&
+             is1_12 != '' && is1_13 != '')
+             {
+                var is1_total = parseInt(is1_1) + parseInt(is1_2) + parseInt(is1_3) + parseInt(is1_4)
+                + parseInt(is1_5) + parseInt(is1_6) + parseInt(is1_7) + parseInt(is1_8) + parseInt(is1_9)
+                + parseInt(is1_10) + parseInt(is1_11) + parseInt(is1_12) + parseInt(is1_13)
+
+                console.log('inside method')
+
+                var is_avg_score = document.getElementById("is_avg_score")
+                console.log(is1_total)
+                var tot = is1_total/13
+                is_avg_score.innerText = tot.toFixed(2)
+
+                var is1_message = document.getElementById('is1_message')
+
+                if (tot > 2.0){
+                    is1_message.innerText = 'Yes, please proceed !';
+                }
+                else{
+                    is1_message.innerText = 'Please check back next year. Thank you !';
+                }
+
+            }
+
+        }
+
+        function form_change2(){
+            var as1_1 = document.forms['screening_form']['as1_1'].value
+            var as1_2 = document.forms['screening_form']['as1_2'].value
+            var as1_3 = document.forms['screening_form']['as1_3'].value
+            var as1_4 = document.forms['screening_form']['as1_4'].value
+            var as1_5 = document.forms['screening_form']['as1_5'].value
+            var as1_6 = document.forms['screening_form']['as1_6'].value
+            var as1_7 = document.forms['screening_form']['as1_7'].value
+            var as1_8 = document.forms['screening_form']['as1_8'].value
+            var as1_9 = document.forms['screening_form']['as1_9'].value
+            var as1_10 = document.forms['screening_form']['as1_10'].value
+
+            console.log('onchange 2')
+
+            if (as1_1 != '' && as1_2 != '' && as1_3 != '' && as1_4 != '' && as1_5 != '' &&
+             as1_6 != '' && as1_7 != '' && as1_8 != '' && as1_9 != '' && as1_10 != ''){
+                var as1_1_total = parseInt(as1_1) + parseInt(as1_2) + parseInt(as1_3) + parseInt(as1_4)
+                + parseInt(as1_5) + parseInt(as1_6) + parseInt(as1_7) + parseInt(as1_8) + parseInt(as1_9)
+                + parseInt(as1_10)
+
+                var as1_1_avg_score = document.getElementById("as1_1_avg_score")
+                var as1_1_tot_score = document.getElementById("as1_1_tot_score")
+                as1_1_tot_score.innerText = as1_1_total;
+                console.log(as1_1_total)
+                var tot = as1_1_total/10
+                as1_1_avg_score.innerText = tot.toFixed(2)
+             }
+        }
+
+        function form_change3(){
+            var cs1_1 = document.forms['screening_form']['cs1_1'].value
+            var cs1_2 = document.forms['screening_form']['cs1_2'].value
+            var cs1_3 = document.forms['screening_form']['cs1_3'].value
+            var cs1_4 = document.forms['screening_form']['cs1_4'].value
+            var cs1_5 = document.forms['screening_form']['cs1_5'].value
+            var cs1_6 = document.forms['screening_form']['cs1_6'].value
+            var cs1_7 = document.forms['screening_form']['cs1_7'].value
+            var cs1_8 = document.forms['screening_form']['cs1_8'].value
+            var cs1_9 = document.forms['screening_form']['cs1_9'].value
+            var cs1_10 = document.forms['screening_form']['cs1_10'].value
+            var cs1_11 = document.forms['screening_form']['cs1_11'].value
+
+            console.log('onchange 3')
+
+            if (cs1_1 != '' && cs1_2 != '' && cs1_3 != '' && cs1_4 != '' && cs1_5 != '' &&
+                cs1_6 != '' && cs1_7 != '' && cs1_8 != '' && cs1_9 != '' && cs1_10 != '' && cs1_11 != ''){
+                var cs1_1_total = parseInt(cs1_1) + parseInt(cs1_2) + parseInt(cs1_3) + parseInt(cs1_4)
+                + parseInt(cs1_5) + parseInt(cs1_6) + parseInt(cs1_7) + parseInt(cs1_8) + parseInt(cs1_9)
+                + parseInt(cs1_10) + parseInt(cs1_11)
+
+                console.log('all values filled')
+
+                var cs1_1_avg_score = document.getElementById("cs1_1_avg_score")
+                var cs1_1_tot_score = document.getElementById("cs1_1_tot_score")
+                cs1_1_tot_score.innerText = cs1_1_total;
+                console.log(cs1_1_total)
+                var tot = cs1_1_total/11
+                cs1_1_avg_score.innerText = tot.toFixed(2)
+             }
+        }
+
+        function form_change4(){
+            var ks1_1 = document.forms['screening_form']['ks1_1'].value
+            var ks1_2 = document.forms['screening_form']['ks1_2'].value
+            var ks1_3 = document.forms['screening_form']['ks1_3'].value
+            var ks1_4 = document.forms['screening_form']['ks1_4'].value
+            var ks1_5 = document.forms['screening_form']['ks1_5'].value
+            var ks1_6 = document.forms['screening_form']['ks1_6'].value
+            var ks1_7 = document.forms['screening_form']['ks1_7'].value
+            var ks1_8 = document.forms['screening_form']['ks1_8'].value
+            var ks1_9 = document.forms['screening_form']['ks1_9'].value
+            var ks1_10 = document.forms['screening_form']['ks1_10'].value
+            var ks1_11 = document.forms['screening_form']['ks1_11'].value
+            var ks1_12 = document.forms['screening_form']['ks1_12'].value
+            var ks1_13 = document.forms['screening_form']['ks1_13'].value
+            var ks1_14 = document.forms['screening_form']['ks1_14'].value
+
+            console.log('onchange 4')
+
+            if (ks1_1 != '' && ks1_2 != '' && ks1_3 != '' && ks1_4 != '' && ks1_5 != '' &&
+                ks1_6 != '' && ks1_7 != '' && ks1_8 != '' && ks1_9 != '' && ks1_10 != '' && ks1_11 != ''
+                && ks1_12 != '' && ks1_13 != '' && ks1_14 != ''){
+                var ks1_1_total = parseInt(ks1_1) + parseInt(ks1_2) + parseInt(ks1_3) + parseInt(ks1_4)
+                + parseInt(ks1_5) + parseInt(ks1_6) + parseInt(ks1_7) + parseInt(ks1_8) + parseInt(ks1_9)
+                + parseInt(ks1_10) + parseInt(ks1_11) + parseInt(ks1_12) + parseInt(ks1_13) + parseInt(ks1_14)
+
+                console.log('all values filled')
+
+                var ks1_1_avg_score = document.getElementById("ks_avg_score")
+                var ks1_1_tot_score = document.getElementById("ks_total_score")
+                console.log(ks1_1_total)
+                var tot = ks1_1_total/14
+                ks1_1_avg_score.innerText = tot.toFixed(2)
+                ks1_1_tot_score.innerText = ks1_1_total
+             }
+        }
+
+        function form_change5(){
+            var rs1_1 = document.forms['screening_form']['rs1_1'].value
+            var rs1_2 = document.forms['screening_form']['rs1_2'].value
+            var rs1_3 = document.forms['screening_form']['rs1_3'].value
+            var rs1_4 = document.forms['screening_form']['rs1_4'].value
+            var rs1_5 = document.forms['screening_form']['rs1_5'].value
+            var rs1_6 = document.forms['screening_form']['rs1_6'].value
+            var rs1_7 = document.forms['screening_form']['rs1_7'].value
+            var rs1_8 = document.forms['screening_form']['rs1_8'].value
+            var rs1_9 = document.forms['screening_form']['rs1_9'].value
+            var rs1_10 = document.forms['screening_form']['rs1_10'].value
+            var rs1_11 = document.forms['screening_form']['rs1_11'].value
+            var rs1_12 = document.forms['screening_form']['rs1_12'].value
+            var rs1_13 = document.forms['screening_form']['rs1_13'].value
+            var rs1_14 = document.forms['screening_form']['rs1_14'].value
+
+            console.log('onchange 5')
+
+            if (rs1_1 != '' && rs1_2 != '' && rs1_3 != '' && rs1_4 != '' && rs1_5 != '' &&
+                rs1_6 != '' && rs1_7 != '' && rs1_8 != '' && rs1_9 != '' && rs1_10 != '' && rs1_11 != ''
+                && rs1_12 != '' && rs1_13 != '' && rs1_14 != ''){
+                var rs1_1_total = parseInt(rs1_1) + parseInt(rs1_2) + parseInt(rs1_3) + parseInt(rs1_4)
+                + parseInt(rs1_5) + parseInt(rs1_6) + parseInt(rs1_7) + parseInt(rs1_8) + parseInt(rs1_9)
+                + parseInt(rs1_10) + parseInt(rs1_11) + parseInt(rs1_12) + parseInt(rs1_13) + parseInt(rs1_14)
+
+                console.log('all values filled')
+
+                var rs1_1_avg_score = document.getElementById("rs_avg_score")
+                var rs1_1_tot_score = document.getElementById("rs_total_score")
+                console.log(rs1_1_total)
+                var tot = rs1_1_total/14
+                rs1_1_avg_score.innerText = tot.toFixed(2)
+                rs1_1_tot_score.innerText = rs1_1_total
+             }
+        }
+
+        function activeTab(evt, id) {
+
+           // Get all elements with class="tablinks" and remove the class "active"
+            let tabactive = document.getElementsByClassName("TabButtonSelected");
+            tabactive[0].className = tabactive[0].className.replace(" TabButtonSelected", "");
+
+            document.getElementById(id).style.display = "block";
+            evt.currentTarget.className += " TabButtonSelected";
+
+            displaySection(evt,id)
+        }
+
+        function displaySection(evt, id) {
+
+            let tabactive = document.getElementsByClassName("tab-section");
+            tabactive[0].className = tabactive[0].className.replace(" d-chart-show", "d-chart-n");
+            // add below line of codes
+            [...document.querySelectorAll('div.tab-section')].forEach(item => item.style.display='none')
+            document.getElementById("Section" + id).style.display = "block";
+            evt.currentTarget.className += " d-chart-show";
+
+        }
+    </script>
+
+<script>
+
+  function getvalues()
+
+  {
+
+    var selchk=document.getElementsByName('Customer_Category');
+
+    var result="";
+
+    for(var i=0;i<selchk.length;i++)
+
+    {
+
+      if(selchk[i].checked)
+
+      {
+
+        result += selchk[i].value +""+"Customer_Category";
+
+      }
+
+    }
+
+    document.write("<p> You have selected : "+ result + "</p>");
+
+
+
+
+
+  }
+
+</script>
+
+<div class="alt-nav">
+
+    <div style="position: absolute;
+    height: 26px;
+    left: 7.80%;
+    right: 38.75%;
+    top: 30%;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    /* or 117% */
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    /* Typography/On Surface/High Emphasis */
+    color: rgba(39, 41, 54, 0.85);">
+        <a href="#" onclick="history.back()"><img style="margin-right: -5px;" src="static/assets/img/Icon.png"/></a>
+        Assessment
+    </div>
+</div>
+<body style="background: linear-gradient(3.47deg, #003366 13.28%, #3f87a6 91.28%);
+position: static;
+width: 1340px;
+overflow-x: hidden;
+height: 650px;">
+
+<div class="rect-meta-1" style="min-height:480px;">
+    <form method="POST" enctype="multipart/form-data" action="score" name="screening_form">
+        {% csrf_token %}
+        <div class="container" id="wrapper11">
+            <div class="d-flex">
+                <div class="d-flex text-center" style="margin-left: -200px; height: 65px; margin-top: 10px; width:800px;">
+                    <div class="TabButton TabButtonSelected" id="Tab1" style="width:650px; font-size: 12px; font-weight: 500; font-family: 'Ubuntu';" onclick="activeTab(event, 'Tab1')">Customer Types</div>
+                    <div class="TabButton " id="Tab2" style="width:650px; font-size: 12px; font-weight: 500; font-family: 'Ubuntu';" onclick="activeTab(event, 'Tab2')">Product Service Opted</div>
+                    <div class="TabButton " id="Tab3" style="width:650px; font-size: 12px; font-weight: 500; font-family: 'Ubuntu';" onclick="activeTab(event, 'Tab3')">Jurisdictional Risk</div>
+                    <div class="TabButton " id="Tab4" style="width:100px; font-size: 12px; font-weight: 500; font-family: 'Ubuntu';" onclick="activeTab(event, 'Tab4')">Customer Transaction Behavior</div>
+                    <div class="TabButton " id="Tab5" style="width:650px; font-size: 12px; font-weight: 500; font-family: 'Ubuntu';" onclick="activeTab(event, 'Tab5')">List Matching</div>
+                    <div class="TabButton " id="Tab6" style="width:650px; font-size: 12px; font-weight: 500; font-family: 'Ubuntu';" onclick="activeTab(event, 'Tab6')">Profile Linkage</div>
+                </div>
+            </div>
+
+
+            <div class="d-flex-col" id="content11" style="margin-top: 70px; margin-left: -200px;">
+                <div id="SectionTab1" class="tab-section d-chart-n d-chart-show" onchange="form_change()">
+                   <table>
+                        <tr>
+                          <th>Customer_Category</th>
+<!--                          <th>Entity_Type</th>-->
+<!--                          <th>High</th>-->
+<!--                          <th>Medium</th>-->
+<!--                          <th>Low</th>-->
+<!--                          <th>Score</th>-->
+                        </tr>
+                        {% for Customer_Types in cty %}
+                          <tr>
+
+                            <td> <input class="rounded-checkbox " type='checkbox' name="Customer_Types" id="{{Customer_Types.id}}"> {{Customer_Types.Customer_Category}} </td>
+<!--                            <td>{{Customer_Types.Entity_Type}}</td>-->
+<!--                            <td>{{Customer_Types.High}}</td>-->
+<!--                            <td>{{Customer_Types.Medium}}</td>-->
+<!--                            <td>{{Customer_Types.Low}}</td>-->
+<!--                            <td>{{Customer_Types.Score}}</td>-->
+                          </tr>
+                        {% endfor %}
+                   </table>
+                </div>
+
+                <div id="SectionTab2" class="tab-section d-chart-n" onchange="form_change2()">
+                    <table>
+                        <tr>
+                          <th>PRODUCT/SERVICE</th>
+<!--                          <th>HIGH </th>-->
+<!--                          <th>Medium</th>-->
+<!--                          <th>Low</th>-->
+<!--                          <th>Score</th>-->
+                        </tr>
+                        {% for Product_Service in pds %}
+                          <tr>
+                            <td> <input type='checkbox' name="Product_Service" id="{{Product_Service.id}}"> {{Product_Service.Product}}</td>
+<!--                            <td>{{Product_Service.High}}</td>-->
+<!--                            <td>{{Product_Service.Medium}}</td>-->
+<!--                            <td>{{Product_Service.Low}}</td>-->
+<!--                            <td>{{Product_Service.Score}}</td>-->
+                          </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+
+                <div id="SectionTab3" class="tab-section d-chart-n" onchange="form_change3()">
+                      <table>
+                            <tr>
+                              <th>COUNTRY/JURISDICTION</th>
+<!--                              <th>GRAY Listed/-->
+<!--                                HIGH Risk</th>-->
+<!--                              <th>Medium</th>-->
+<!--                              <th>Low</th>-->
+<!--                              <th>Score</th>-->
+                            </tr>
+                            {% for Juridictional_Risk in jdr %}
+                              <tr>
+                                <td> <input type='checkbox'> {{Juridictional_Risk.Country_Juridiction}}</td>
+<!--                                <td>{{Juridictional_Risk.High_Risk}}</td>-->
+<!--                                <td>{{Juridictional_Risk.Medium}}</td>-->
+<!--                                <td>{{Juridictional_Risk.Low}}</td>-->
+<!--                                <td>{{Juridictional_Risk.Score}}</td>-->
+                              </tr>
+                            {% endfor %}
+                      </table>
+                </div>
+
+                <div id="SectionTab4" class="tab-section d-chart-n" onchange="form_change4()">
+                      <table class="question-width">
+                            <tr>
+                              <th>TRANSACTION/BEHAVIOR</th>
+                              <th>Frequency
+                                ( Per Week)</th>
+<!--                              <th>SCORE</th>-->
+                              <th>Frequency
+                                ( Per Week)</th>
+<!--                              <th>SCORE</th>-->
+                              <th>Frequency
+                                ( Per Week)</th>
+<!--                              <th>Score</th>-->
+                            </tr>
+                            {% for Transaction_Behavior in tsb %}
+                              <tr>
+                                <td>{{Transaction_Behavior.Transaction}}</td>
+                                <td> <input type='radio'> {{Transaction_Behavior.Frquency_one}}</td>
+<!--                                <td>{{Transaction_Behavior.Score_one}}</td>-->
+                                <td> <input type='radio'> {{Transaction_Behavior.Frquency_Two}}</td>
+<!--                                <td>{{Transaction_Behavior.Score_two}}</td>-->
+                                <td> <input type='radio'> {{Transaction_Behavior.Frquency_Three}}</td>
+<!--                                <td>{{Transaction_Behavior.Score_three}}</td>-->
+                              </tr>
+                            {% endfor %}
+                      </table>
+                </div>
+
+                <div id="SectionTab5" class="tab-section d-chart-n" onchange="form_change5()">
+                    <table>
+                        <tr>
+                          <th>LIST NAME</th>
+<!--                          <th>VERY HIGH-->
+<!--                            100% match</th>-->
+<!--                          <th>HIGH-->
+<!--                            80%-99% match</th>-->
+<!--                          <th>MEDIUM-->
+<!--                            <80% match</th>-->
+                        </tr>
+                        {% for List_Matching in ltm %}
+                          <tr>
+                            <td> <input type='checkbox'> {{List_Matching.List_Name}}</td>
+<!--                            <td>{{List_Matching.Very_High}}</td>-->
+<!--                            <td>{{List_Matching.High}}</td>-->
+<!--                            <td>{{List_Matching.Medium}}</td>-->
+                          </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div id="SectionTab6" class="tab-section d-chart-n" onchange="form_change5()">
+                    <table>
+                        <tr>
+                          <th>PARAMETERS</th>
+<!--                          <th>High</th>-->
+<!--                          <th>Medium</th>-->
+<!--                          <th>Low</th>-->
+<!--                          <th>Score</th>-->
+                        </tr>
+                        {% for Profile_linkage in pfl %}
+                          <tr>
+                            <td> <input type='checkbox'> {{Profile_linkage.Parameters}}</td>
+<!--                            <td>{{Profile_linkage.High}}</td>-->
+<!--                            <td>{{Profile_linkage.Medium}}</td>-->
+<!--                            <td>{{Profile_linkage.Low}}</td>-->
+<!--                            <td>{{Profile_linkage.Score}}</td>-->
+                          </tr>
+                        {% endfor %}
+
+                    </table>
+                    <button class="proceed-index-button" type="submit" style="font-size: 12px; margin-left: 500px; margin-top: 50px;"><b>Proceed</b></button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
+</body>
+
+</html>

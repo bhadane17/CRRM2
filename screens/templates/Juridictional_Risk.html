@@ -1,0 +1,43 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en"><link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+</head>
+<style>
+  th,td{
+    border: 1px black solid;
+    background-color: #D6EEEE;
+  }
+</style>
+<body>
+  <table>
+    <tr>
+      <th>COUNTRY/JURISDICTION</th>
+      <th>GRAY Listed/
+        HIGH Risk</th>
+      <th>Medium</th>
+      <th>Low</th>
+      <th>Score</th>
+    </tr>
+    {% for Juridictional_Risk in jdr %}
+      <tr>
+        <td>{{Juridictional_Risk.Country_Juridiction}}</td>
+        <td>{{Juridictional_Risk.High_Risk}}</td>
+        <td>{{Juridictional_Risk.Medium}}</td>
+        <td>{{Juridictional_Risk.Low}}</td>
+        <td>{{Juridictional_Risk.Score}}</td>
+      </tr>
+    {% endfor %} 
+  </table>
+{% endblock %}  
+</body>
+
+</html>

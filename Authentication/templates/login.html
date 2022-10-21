@@ -1,0 +1,37 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+</div>
+<body class="body-class">
+<div class="login-box">
+    <p class="esg_title">CRRM-Tool</p>
+    <p class="esg_sub_title">Welcome. Please log in to your account.</p>
+    <div class="login-form">
+        <form method="POST">
+            <fieldset class="form-group">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" class="login-text-box-1" name="username" required>
+                <input type="password" placeholder="Password" class="login-text-box-2" name="password" required>
+                <div class="login-radio">
+                    <input type="checkbox" style="height: 20px;"><p style="margin-top: -24px; margin-left: 18px;">Remember Me</p>
+                    <a href="javascript:;" onclick="#">
+                        <div style=" margin-left: 148px; margin-top: -34px;" >
+                            <label>Forgot Passowrd?</label>
+                        </div>
+                    </a>
+                    <a><button class="login-main-button"><b>Login</b></button></a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div >
+{% endblock %}
+</body>
+
+</html>

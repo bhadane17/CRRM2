@@ -1,0 +1,54 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en"><link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+</head>
+<style>
+  th,td{
+<!--    border: 1px black solid;-->
+    background-color: #D6EEEE;
+  }
+</style>
+<body style="background: linear-gradient(3.47deg, #003366 13.28%, #3f87a6 91.28%);
+position: static;
+width: 1240px;
+overflow-x: hidden;
+margin-left: 10px;
+margin-top:10px;
+height: 582px;">
+<form method="POST" enctype="multipart/form-data" action="first-screen">
+    {% csrf_token %}
+  <table>
+    <tr>
+<!--      <th>Filter Number</th>-->
+      <th style="color: white;">Risk Assesment</th>
+      <th style="color: white;">Description</th>
+      <th style="color: white;">Weight</th>
+      <th style="color: white;">Risk Factor Assesment Score (Max)</th>
+    </tr>
+    {% for Weight_distribution in wtd %}
+      <tr>
+<!--        <td>{{Weight_distribution.Filter_Number}}</td>-->
+        <td style="color: white;"><input type='checkbox'> {{Weight_distribution.Risk_Assesment}}</td>
+        <td style="color: white;">{{Weight_distribution.Description}}</td>
+        <td style="color: white;">{{Weight_distribution.Weight}}</td>
+        <td style="color: white;">{{Weight_distribution.Assesment_Score}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <button class="proceed-index-button" type="submit" style="font-size: 12px; margin-left: 500px; margin-top: 50px;"><b>Proceed</b></button>
+
+</form>
+{% endblock %}
+</body>
+
+</html>
