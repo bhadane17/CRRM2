@@ -1,11 +1,479 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  
 <head>
     <meta charset="UTF-8">
-    <title>Score</title>
+    <script src="jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+    <script src="https://unpkg.com/chartjs-plugin-datalabels@0.7.0/dist/chartjs-plugin-datalabels.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
-<p>Here the score</p>
 
+
+<script>
+  var data = [30, 61, 100];
+  var config = {
+    type: "gauge",
+    data: {
+      labels: ['Success', 'Warning','Error'],
+      datasets: [{
+        data: data,
+        value: {{total}},
+        backgroundColor: ["green", "rgb(192, 192, 3)", "red"],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      // title: {
+      //   display: true,
+      //   text: "Gauge chart with datalabels plugin"
+      // },
+      layout: {
+        padding: {
+          bottom: 30
+        }
+      },
+      needle: {
+        // Needle circle radius as the percentage of the chart area width
+        radiusPercentage: 2,
+        // Needle width as the percentage of the chart area width
+        widthPercentage: 3.2,
+        // Needle length as the percentage of the interval between inner radius (0%) and outer radius (100%) of the arc
+        lengthPercentage: 80,
+        // The color of the needle
+        color: "rgba(0, 0, 0, 1)"
+      },
+  
+      // valueLabel: {
+      //   formatter: Math.round
+      // },
+      plugins: {
+        datalabels: {
+          display: false,
+          formatter: function(value, context) {
+            //return '>'+value;
+            if (value <= 100) {
+              return value;
+            } else {
+              return '';
+            }
+  
+          },
+          color: function(context) {
+            //return context.dataset.backgroundColor;
+            return 'black';
+          },
+          //color: 'rgba(255, 255, 255, 1.0)',
+          /*backgroundColor: "rgba(0, 0, 0, 1.0)",*/
+          borderWidth: 0,
+          borderRadius: 5,
+          font: {
+            weight: "bold"
+          }
+        }
+  
+      }
+    }
+  };
+  
+  window.onload = function() {
+    var ctx = document.getElementById("chart").getContext("2d");
+    window.myGauge = new Chart(ctx, config);
+  };
+  </script>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+</style>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+    th,td{
+      border-radius: 10px;
+        }
+        .single-row input[type="radio"] {
+    display: none;
+    }
+    .collapsible {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+      padding: 3px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+
+    /* .active, .collapsible:hover {
+      background-color:#48b1bf;
+    } */
+
+    .content {
+      padding: 0 5px;
+      display: none;
+      overflow: hidden;
+      background-color: #fcf8ee;
+    }
+    
+  .high {
+  display: flex;
+  justify-content:stretch;
+  font-size: 15px; 
+  list-style-type: none;
+  padding-left: 30px; 
+  padding-top:260px;
+  color:red;
+  font-family: ubuntu;
+}
+.medium {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 15px; 
+  list-style-type: none;
+  padding-left: 30px; 
+  margin-top:-20px;
+  color:rgb(192, 192, 3);
+  font-family: ubuntu;
+}
+.low {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 15px; 
+  list-style-type: none;
+  padding-left: 30px; 
+  margin-top:-20px;
+  color:green;
+  font-family: ubuntu;
+}
+.arrow {
+  border: solid grey;
+  border-width: 0 2.1px 2.1px 0;
+  display: inline-block;
+  padding: 2.1px;
+ 
+
+  
+}
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.btn {
+        background-color: grey;
+        border: none;
+        color: white;
+        padding: 1px 2px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration:None
+      }
+      
+      /* Darker background on mouse-over */
+      .btn:hover {
+        background-color: RoyalBlue;
+        text-decoration:None
+      }
+      
+</style>
+
+<body style="background-color: #F4F4F4;">
+<main id="main">
+    
+    <button type="button" onclick="history.back()" style="display: none;" id="back-btn"></button>
+    <a href="#" style="color:Green; margin-left:10px;" onclick="document.getElementById('back-btn').click()" alt="Back"><img src="static/assets/img/Icon.png" />Back</a>
+    <h3  style="margin-left:120px; margin-top:30px;"><b>Score Details</b></h3>
+    <h4 class="sub_head_final" style="margin-left:120px; font-size:18px; font-family: Ubuntu;  font-weight: 400; line-height: 21px; ">This is the final calculated score</h4>
+
+    <!---------------------- semicircle progress bar ----------------->
+    <div class="progress_outer_box" style="height: 200px; background-color:#FFFFFF; width:350px; margin-left:120px; margin-top: 2rem; position: absolute; border-radius: 12px;">
+        <div id="canvas-holder" style="width:100%;margin-top: 10px;">
+          <canvas id="chart"></canvas>
+        </div>
+        <center>
+            <div style="margin-left:-10px; margin-top:-15px; font-size:18px;"><b>Total Score</b></div>
+        </center>
+    </div>
+    <!--  smile faces div -->
+    <div class="rates_feedback" style="height: 200px; background-color:#FFFFFF; width:350px; margin-left:490px; margin-top: 2rem; position: absolute; border-radius: 12px;">
+        <center>
+            {% if total <= 30 %}
+            <a href="#"><img class="image0" style="margin-top:30px; width: 70px; height: 70px;" src="static/assets/img/bg/low.png"></a>
+            <p class="average_class" style="margin-top:10px;">Risk Factor - {{total}}</p>
+            <p style="color:Green;font-weight: bold;"><b>Low</b></p>
+
+            {% elif total <= 60 %}
+            <a href="#"><img style="margin-top:30px; width: 70px; height: 70px;" src="static/assets/img/bg/medium.png"></a>
+            <p style="margin-top:10px;">Risk Factor - {{total}}</p>
+            <p style="color:rgb(192, 192, 3);font-weight:bold;"><b>Medium</b></p>
+
+            {% else %}
+            <a href="#"><img style="margin-top:30px; width: 70px; height: 70px;" src="static/assets/img/bg/high.png"></a>
+            <p style="margin-top:10px;">Risk Factor - {{total}}</p>
+            <p style="color:red;font-weight: bold;"><b>High</b></p>
+
+            {% endif %}
+            
+        </center>
+        
+    </div>
+     
+    <div class="container" style="background-color:#F4F4F4; padding:10px; height: 800px; margin-top: -2rem;">
+      
+        <div class="container text-white; rounded">
+       
+            <table style="background:#FFFFFF; margin-bottom: 10px; margin-top:20px; margin-left:40px; width:992px;font-family: ubuntu;">
+              <ul class="high">
+                <p style="margin-top: -2px;"><img class="image0" style="width: 30px;height: 30px;" src="static/assets/img/bg/high.png">High Impact Category:
+                 
+                  {%if lm >= 61 %}
+                    <p>List Matching,</p>
+                  {% endif %}
+                  {% if final_tsb_score >= 61 %}
+                    <p>Customer Transaction Behavior,</p>
+                  {% endif %}
+                  {% if final_ct_score >= 61 %}
+                    <p>Customer Categories,</p>
+                  {% endif %}
+                  {% if final_ps_score >= 61 %}
+                    <p>Product Service,</p>
+                  {% endif %}
+                  {% if jdr1 >= 61 %}
+                    <p>Juridictional Risk,</p>
+                  {% endif %}
+                  {% if final_pl_score >= 61 %}
+                  <p>Profile linkage,</p>
+                  {% endif %}
+               </ul>
+               <ul class="medium">
+                 <p style="margin-top: -2px;"><img class="image0" style="width: 30px;height: 30px;" src="static/assets/img/bg/medium.png">Medium Impact Category:
+                  {%if lm >= 31 and lm <= 60 %}
+                    <p>List Matching,</p>
+                    {% endif %}
+                    {% if final_tsb_score >= 31 and final_tsb_score <= 60 %}
+                      <p>Customer Transaction Behavior,</p>
+                    {% endif %}
+                    {% if final_ct_score >= 31 and final_ct_score <= 60  %}
+                      <p>Customer Categories,</p>
+                    {% endif %}
+                    {% if final_ps_score >= 31 or final_ps_score <= 60 %}
+                      <p>Product Service,</p>
+                    {% endif %}
+                    {% if jdr1 >= 31 and jdr1 <= 60  %}
+                      <p>Juridictional Risk,</p>
+                    {% endif %}
+                    {% if final_pl_score >= 30 and final_pl_score <= 60 %}
+                      <p>Profile linkage,</p>
+                 {% endif %}
+               </ul>
+                <ul class="low">
+                  <p style="margin-top: -2px;"><img class="image0" style="width: 30px;height: 30px;" src="static/assets/img/bg/low.png">Low Impact Category:
+                    
+                  {%if lm <= 30 %}
+                  <p>List Matching,</p>
+                {% endif %}
+                {% if final_tsb_score <= 30 %}
+                  <p>Customer Transaction Behavior,</p>
+                {% endif %}
+                {% if final_ct_score <= 30 %}
+                  <p>Customer Categories,</p>
+                {% endif %}
+                {% if final_ps_score <= 30 %}
+                  <p>Product Service,</p>
+                {% endif %}
+                {% if jdr1 <= 30 %}
+                  <p>Juridictional Risk,</p>
+                {% endif %}
+                {% if final_pl_score <= 30 %}
+                  <p>Profile linkage,</p>
+                {% endif %}
+                </ul>
+              <tbody>
+                
+                <tr>
+                    <th scope="row" class="table-active">Categories</th>
+                    <th scope="row" class="table-active">Score</th>
+                    <th scope="row" class="table-active">Risk Category</th>
+                  </tr> 
+                <tr>
+                  <td><button type="button" class="collapsible">Customer Categories         <i class="arrow down"></i> </button>
+                    
+                    <div class="content">
+                      <p>{{ct1}}</p></td>
+                    <td>{{final_ct_score}}</td>
+                    
+                    <td>
+                      {%if final_ct_score <= 30 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 0-30" style="color:Green;font-weight: bold;text-decoration:None">Low</a>
+                      {%elif final_ct_score <= 60 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 31-60"style="color:rgb(192, 192, 3);font-weight: bold;text-decoration:None">Medium</a>
+                      {% else %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 61-100" style="color:red;font-weight: bold;text-decoration:None">High</a>
+                      {% endif %}
+                    </td>
+
+                </tr>
+                <tr>
+                  <td><button type="button" class="collapsible">Product Services          <i class="arrow down"></i></button>
+                    <div class="content">
+                      <p>{{ps1}}</p></td>
+                    <td>{{final_ps_score}}</td>
+                     
+                    <td>
+                      {%if final_ps_score <= 30 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 0-30" style="color:Green;font-weight: bold;text-decoration:None">Low</a>
+                      {%elif final_ps_score <= 60 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 31-60"style="color:rgb(192, 192, 3);font-weight: bold;text-decoration:None">Medium</a>
+                      {% else %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 61-100" style="color:red;font-weight: bold;text-decoration:None">High</a>
+                      {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="collapsible">Juridictional Risk          <i class="arrow down"></i></button>
+                    <div class="content">
+                      <p>{{js1}}</p></td>
+                    <td>{{jdr1}}</td>
+                    <td>
+                      {%if jdr1 <= 30 %}
+                      <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 0-30" style="color:Green;font-weight: bold;text-decoration:None">Low</a>
+                      {%elif jdr1 <= 60 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 31-60"style="color:rgb(192, 192, 3);font-weight: bold;text-decoration:None">Medium</a>
+                      {% else %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 61-100" style="color:red;font-weight: bold;text-decoration:None">High</a>
+                      {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="collapsible">Customer Transaction behaviour          <i class="arrow down"></i></button>
+                      <div class="content">
+                        <p>{{tsb1}}</p></td>
+                    <td> {{final_tsb_score}}</td>
+                    <td>
+                      {%if final_tsb_score <= 30 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 0-30" style="color:Green;font-weight: bold;text-decoration:None">Low</a>
+                      {%elif final_tsb_score <= 60 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 31-60"style="color:rgb(192, 192, 3);font-weight: bold;text-decoration:None">Medium</a>
+                      {% else %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 61-100" style="color:red;font-weight: bold;text-decoration:None">High</a>
+                      {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="collapsible">List Matching         <i class="arrow down"></i></button>
+                        <div class="content">
+                          <p>{{lm}}</p></td>
+                  <td>{{lm}}</td>
+                  <td>
+                      {%if lm <= 30 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 0-30" style="color:Green;font-weight: bold;text-decoration:None">Low</a>
+                      {%elif lm <= 60 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 31-60"style="color:rgb(192, 192, 3);font-weight: bold;text-decoration:None">Medium</a>
+                      {% else %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 61-100" style="color:red;font-weight: bold;text-decoration:None">High</a>
+                      {% endif %}
+                    </td>
+                </tr>
+                <tr>  
+                  <td><button type="button" class="collapsible">Profile linkage         <i class="arrow down"></i></button>
+                      <div class="content">
+                        <p>{{pl1}}</p></td>
+                    
+                    <td>{{final_pl_score}}</td>
+                    <td>
+                      {%if final_pl_score <= 30 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 0-30" style="color:Green;font-weight: bold;text-decoration:None">Low</a>
+                      {%elif final_pl_score <= 30 or final_pl_score >= 60 %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 31-60"style="color:rgb(192, 192, 3);font-weight: bold;text-decoration:None">Medium</a>
+                      {% else %}
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Score Range: 61-100" style="color:red;font-weight: bold;text-decoration:None">High</a>
+                      {% endif %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-left:40px; margin-top:20px;"><b>Risk Score Categories</b></h4>
+                <table class="table table-bordered" style="background:#FFFFFF; margin-bottom: 10px;margin-left:40px; width:1032px;font-family: ubuntu;">
+                      <tr>
+                        <th scope="row" class="table-active">Minimum Risk Score</th>
+                        <th scope="row" class="table-active">Maximum Risk Score</th>
+                        <th scope="row" class="table-active">Risk Category</th>
+                      </tr>
+                      <tr>
+                        <td>0</td>
+                        <td>30</td>
+                        <td>Low</td>
+                      </tr>
+                      <tr>
+                        <td>31</td>
+                        <td>60</td>
+                        <td>Medium</td>
+                      </tr>
+                      <tr>
+                        <td>61</td>
+                        <td>100</td>
+                        <td>High</td>
+                      </tr>
+                </table>
+                
+            </div>
+
+    </div>
+</div>
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+</script>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });
+</script>
+{% endblock %}
 </body>
 </html>

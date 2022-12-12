@@ -1,0 +1,103 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en"><link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+</head>
+<style>
+  table {
+  border-collapse: collapse;
+  width: 70%;
+}
+th{
+  border-top-right-radius:4px;
+  border-top-left-radius:4px;
+}
+  
+  th,td{
+    border: 1px #fafafa;
+    background-color: #fafafa;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-left: 20px;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  table tr:hover td {
+  background: #e4fefe;
+  cursor: pointer;
+}
+</style>
+<body style="background: linear-gradient(3.47deg, #003366 13.28%, #3f87a6 91.28%);
+position: static;
+width: 1240px;
+overflow-x: hidden;
+margin-left: 10px;
+margin-top:10px;
+height: 100%">
+
+<div class="alt-nav" style="height: 60px;">
+  <div style="position: absolute;
+  height: 10px;
+  left: 7.80%;
+  right: 38.75%;
+  top: 30%;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  /* or 117% */
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  /* Typography/On Surface/High Emphasis */
+  color: rgba(39, 41, 54, 0.85);">
+</div>
+<button type="button" onclick="history.back()" style="display: none;" id="back-btn"></button>
+  <a href="#" style="color:green; margin-left:90px;" onclick="document.getElementById('back-btn').click()" alt="Back"><img src="static/assets/img/Icon.png" />Back</a>
+</div>
+<div>
+
+<form method="POST" enctype="multipart/form-data" action="weight_distribution">
+    {% csrf_token %}
+  <table class="table1" style="font-family: ubuntu;margin-left:170px;margin-top: 52px;">
+    <tr>
+<!--      <th>Filter Number</th>-->
+      <th style="color: #070707;background-color: lightgrey;">Risk Assesment</th>
+      <th style="color: #070707;background-color: lightgrey;">Description</th>
+      <th style="color: #070707;background-color: lightgrey;">Weight</th>
+      <th style="color: #070707;background-color:lightgrey ;">Risk Factor Assesment Score (Max)</th>
+    </tr>
+    {% for Weight_distribution in wtd1 %}
+      <tr>
+<!--        <td>{{Weight_distribution.Filter_Number}}</td>-->
+        <td style="color: #070707;"> {{Weight_distribution.Risk_Assesment}}</td>
+        <td style="color: #070707;">{{Weight_distribution.Description}}</td>
+        <td style="color: #070707;">
+            <select name="Weight" id="{{Weight_distribution.Weight}}";style="style=padding: 6px 20px; border: none; border-radius: 4px;background-color: #e1dcdc;"">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+            </select></td>
+        <td style="color: #070707;padding-left: 90px;">{{Weight_distribution.Assesment_Score}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <button class="proceed-index-button" type="submit" style="font-size: 18px; margin-left: 500px; margin-top: 20px;"><b>Update</b></button>
+
+</form>
+{% endblock %}
+</body>
+
+</html>

@@ -51,6 +51,7 @@ class Transaction_Behavior(models.Model):
     Score_two=models.IntegerField()
     Frquency_Three=models.IntegerField(default='3')
     Score_three=models.IntegerField()
+    Non_selected=models.CharField(max_length=4, default="None")
 
 
 

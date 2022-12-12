@@ -12,10 +12,31 @@
     <title>Introduction</title>
 </head>
 <style>
+ table {
+  border-collapse: collapse;
+  width: 70%;
+ 
+}
+th{
+  border-top-right-radius:4px;
+  border-top-left-radius:4px;
+
+}
   th,td{
-<!--    border: 1px black solid;-->
-    background-color: #D6EEEE;
+    border: 1px #fafafa;
+    background-color: #fafafa;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-left: 20px;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    
   }
+  table tr:hover td {
+  background: #e4fefe;
+  cursor: pointer;
+}
 </style>
 <body style="background: linear-gradient(3.47deg, #003366 13.28%, #3f87a6 91.28%);
 position: static;
@@ -24,28 +45,55 @@ overflow-x: hidden;
 margin-left: 10px;
 margin-top:10px;
 height: 582px;">
-<form method="POST" enctype="multipart/form-data" action="first-screen">
+
+
+
+<div class="alt-nav" style="height: 60px;">
+<div style="position: absolute;
+height: 10px;
+left: 7.80%;
+right: 38.75%;
+top: 30%;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 28px;
+/* or 117% */
+font-feature-settings: 'pnum' on, 'lnum' on;
+/* Typography/On Surface/High Emphasis */
+color: rgba(39, 41, 54, 0.85);">
+<!--        <a href="#" onclick="history.back()"><img style="margin-right: -5px;" src="static/assets/img/Icon.png"/></a>-->
+<!--        Assessment-->
+   
+</div>
+<button type="button" onclick="history.back()" style="display: none;" id="back-btn"></button>
+  <a href="#" style="color:green; margin-left:10px;" onclick="document.getElementById('back-btn').click()" alt="Back"><img src="static/assets/img/Icon.png" />Back</a>
+</div>
+<div>
+
+<form method="POST" enctype="multipart/form-data" action="weight_distribution_edit">
     {% csrf_token %}
-  <table>
+  <table style="border-radius: 100px;margin-left:170px;margin-top: 47px;">
     <tr>
 <!--      <th>Filter Number</th>-->
-      <th style="color: white;">Risk Assesment</th>
-      <th style="color: white;">Description</th>
-      <th style="color: white;">Weight</th>
-      <th style="color: white;">Risk Factor Assesment Score (Max)</th>
+      <th style="color: #070707;background-color: lightgrey;">Risk Assesment</th>
+      <th style="color: #070707;background-color: lightgrey;">Description</th>
+      <th style="color: #070707;background-color: lightgrey;">Weight</th>
+      <th style="color: #070707;background-color:lightgrey ;">Risk Factor Assesment Score (Max)</th>
     </tr>
     {% for Weight_distribution in wtd %}
       <tr>
 <!--        <td>{{Weight_distribution.Filter_Number}}</td>-->
-        <td style="color: white;"><input type='checkbox'> {{Weight_distribution.Risk_Assesment}}</td>
-        <td style="color: white;">{{Weight_distribution.Description}}</td>
-        <td style="color: white;">{{Weight_distribution.Weight}}</td>
-        <td style="color: white;">{{Weight_distribution.Assesment_Score}}</td>
+        <td style="color: #070707;"> {{Weight_distribution.Risk_Assesment}}</td>
+        <td style="color: #070707;">{{Weight_distribution.Description}}</td>
+        <td style="color: #070707;">{{Weight_distribution.Weight}}</td>
+        <td style="color: #070707;padding-left: 90px;">{{Weight_distribution.Assesment_Score}}</td>
       </tr>
     {% endfor %}
   </table>
 
-  <button class="proceed-index-button" type="submit" style="font-size: 12px; margin-left: 500px; margin-top: 50px;"><b>Proceed</b></button>
+  <button class="proceed-index-button" type="submit" style="font-size: 18px; margin-left: 500px; margin-top: 20px;"><b>Edit</b></button>
 
 </form>
 {% endblock %}

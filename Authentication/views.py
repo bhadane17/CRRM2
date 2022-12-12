@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .decorators import unauthenticated_user,allowed_users
 
+@unauthenticated_user
 
 def login_user(request):
     if request.method == 'POST':
@@ -17,11 +19,9 @@ def login_user(request):
         else:
             messages.success(request, 'Invalid Username or Password')
             return render(request, 'login.html')
-    if request.user.is_authenticated:
-        context = {'authorized': True}
-        return render(request, 'introduction.html', context)
-    else:
-        return render(request, 'login.html')
+    
+
+    return render(request, 'login.html')
 
 
 @login_required

@@ -7,8 +7,7 @@
  <meta charset="utf-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <link href="static/assets/css/style-figma.css" rel="stylesheet">
-</div>
-<body class="body-class">
+<body class="body-class" style="background-image: url('static/assets/img/bg/bg1.png')">
 <div class="login-box">
     <p class="esg_title">CRRM-Tool</p>
     <p class="esg_sub_title">Welcome. Please log in to your account.</p>
@@ -19,10 +18,10 @@
                 <input type="text" placeholder="Username" class="login-text-box-1" name="username" required>
                 <input type="password" placeholder="Password" class="login-text-box-2" name="password" required>
                 <div class="login-radio">
-                    <input type="checkbox" style="height: 20px;"><p style="margin-top: -24px; margin-left: 18px;">Remember Me</p>
+                    <input type="checkbox" name="rm" id="rm"> <label for="rm">Remember Me</label>
                     <a href="javascript:;" onclick="#">
-                        <div style=" margin-left: 148px; margin-top: -34px;" >
-                            <label>Forgot Passowrd?</label>
+                        <div style=" margin-left: 148px; margin-top: -1rem;" >
+                            <label>Forgot Password?</label>
                         </div>
                     </a>
                     <a><button class="login-main-button"><b>Login</b></button></a>

@@ -1024,11 +1024,12 @@ input[type="radio"]{
 
 .login-box{
     position: absolute;
-    width: 368px;
+    width: 18rem;
     height: 360px;
     left: 448px;
     top: 150px;
     border-radius: 8px;
+    margin-left: -20rem;
 
     background: #FFFFFF;
     /* Elevation/03 */
@@ -1041,8 +1042,8 @@ input[type="radio"]{
     position: absolute;
     width: 250px;
     height: 32px;
-    left: 55px;
-    top: 150px;
+    left: 1rem;
+    top: 9rem;
     font-size: 12px;
     padding-left:10px;
     border-radius: 4px;
@@ -1054,8 +1055,8 @@ input[type="radio"]{
     position: absolute;
     width: 250px;
     height: 32px;
-    left: 55px;
-    top: 195px;
+    left: 1rem;
+    top: 12rem;
     margin-top: 10px;
     font-size: 12px;
     padding-left:10px;
@@ -1664,9 +1665,9 @@ input[type="radio"]{
    width: 500px;
    font-size: 28px;
    font-weight: 500;
-   margin-top: 25px;
+   margin-top: 2rem;
    font-family: 'Ubuntu';
-   margin-left: 108px;
+   margin-left: 5rem;
    color: #272936;
 
 }
@@ -1676,25 +1677,25 @@ input[type="radio"]{
     width: 500px;
    font-size: 12px;
    font-weight: 500;
-   margin-top: -15px;
-   margin-left: 78px;
+   margin-top: -1rem;
+   margin-left: 2.5rem;
    color: #272936;
 }
 
 .login-form{
     height: 200px;
     width: 300px;
-    margin-top: -20px;
-    margin-left: 43px;
+    margin-top: -1rem;
+    margin-left: -2rem;
 }
 
 .login-radio{
     height: 100px;
     width: 300px;
-    margin-top: 130px;
+    margin-top: 8rem;
     font-size: 12px;
     font-family: 'Ubuntu';
-    margin-left: 12px;
+    margin-left: 3rem;
     color: rgba(39, 41, 54, 0.55);
 }
 
@@ -1709,6 +1710,7 @@ input[type="radio"]{
     border-width: thin;
     border-radius: 4px;
     background-color: #003366;
+    margin-left: rem;
 }
 
 .select-box{
@@ -1980,6 +1982,17 @@ input[type="radio"]{
     border-radius: 4px;
     background-color: #003366;
 }
+.proceed-index-button1{
+    height: 30px;
+    width: 200px;
+    color: white;
+    border: ridge;
+    font-size: 12px
+    font-weight: 500;
+    border-width: thin;
+    border-radius: 4px;
+    background-color: #003366;
+}
 
 .forms-dropdown-box{
     box-sizing: border-box;
@@ -2085,8 +2098,99 @@ input[type="radio"]{
 .body-class{
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(to left, #333, #3f87a6 60%, #eee 75%, #3f87a6 75%);
+    #background-image: linear-gradient(to left, #333, #3f87a6 60%, #eee 75%, #3f87a6 75%);
+    background-image: url('screens/static/assets/img/bg/customer_risk.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
+}
+
+.client-generic-left-margin{
+    margin-left: 60px;
+    margin-top: 30px;
+
+}
+
+
+.main-container{
+    width: 1032px;
+    left: 204px;
+    margin-top: 5px;
+    padding-right: 10rem;
+    background: linear-gradient(3.47deg, #00649B 13.28%, #66A9CD 93.28%);
+
+}
+
+
+/*--------------------self assessment 2(Requirements- General )--------------------------*/
+.main-heading{
+    /* The Part - A set of questions are related to the Investment Manager */
+    width: 738px;
+    position: absolute;
+    height: 25px;
+    left: 32.5%;
+    right: 16.25%;
+    top: 126px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+
+    color: #444444;
+
+}
+
+
+.sub-heading{
+    /* Part A(I) : If the investment manager chooses to apply the Global ESG Disclosure Standards
+     for Investment Products to a specific investment product, */
+    position: absolute;
+    width: 700px;
+    height: 42px;
+    left: 32.5%;
+    right: 16.25%;
+    top: 170px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+
+    color: #6B6B6B;
+}
+.main-header{
+
+    width: 500px;
+    height: 30px;
+    left: 32.5%;
+    right: 16.25%;
+    top: 166px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+
+    color: #444444;
+}
+.kamlesh{
+    padding-top: 2rem;
+    margin-top:2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    padding-right: 10rem;
+    background-color: #FFFFFF;
 }
